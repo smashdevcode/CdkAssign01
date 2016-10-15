@@ -1,0 +1,23 @@
+﻿@model CdkAssign01.Models.OrdersListViewModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <div>
+
+    New Orders!
+
+        @Html.DisplayFor(model => model.Orders[0].OrderId)
+        @Html.DisplayFor(model => model.Orders[1].OrderId)
+    </div>
+</body>
+</html>

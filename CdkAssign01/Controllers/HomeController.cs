@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using CdkAssign01.Models;
 
 namespace CdkAssign01.Controllers
 {
@@ -13,18 +14,32 @@ namespace CdkAssign01.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult Lookup()
         {
-            ViewBag.Message = "Your application description page.";
+            var ordersListViewModel = GetMockOrdersListViewModel();
 
-            return View();
+            return View("OrdersList",ordersListViewModel);
         }
 
-        public ActionResult Contact()
+        private OrdersListViewModel GetMockOrdersListViewModel()
         {
-            ViewBag.Message = "Your contact page.";
+            var ordersListViewModel = new OrdersListViewModel();
+            ordersListViewModel.Orders = new List<OrderViewModel>();
 
-            return View();
+            OrderViewModel order;
+
+            order = new OrderViewModel();
+            order.OrderId = "1000";
+            order.CustomerId = "9000";
+            ordersListViewModel.Orders.Add(order);
+
+            order = new OrderViewModel();
+            order.OrderId = "1001";
+            order.CustomerId = "9001";
+            ordersListViewModel.Orders.Add(order);
+
+            return ordersListViewModel;
         }
+
     }
 }
