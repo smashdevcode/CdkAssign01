@@ -16,8 +16,8 @@ namespace CdkAssign01.DAL
         {
             DataSet ds = new DataSet();
             var constr = ConfigurationManager.ConnectionStrings["CDKConnection"].ConnectionString;
-            var con = new SqlConnection(constr);
-            var cmd = new SqlCommand("GetOrdersForCustomers", con);
+            var conn = new SqlConnection(constr);
+            var cmd = new SqlCommand("GetOrdersForCustomers", conn);
 
             cmd.Parameters.Add("@CustomerId", SqlDbType.Int).Value = customerId;
 

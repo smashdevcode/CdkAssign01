@@ -8,18 +8,23 @@ namespace CdkAssign01.Models.DTO
 
     public class OrdersDTO
     {
-        List<OrderDTO> Orders;
+        public List<OrderDTO> Orders;
+
+        public OrdersDTO()
+        {
+            Orders = new List<OrderDTO>();
+        }
     }
 
     public class OrderDTO
     {
-        public string OrderId { get; set; }
-        public string CustomerId { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string City { get; set; }
-        public string StateCode { get; set; }
-        public string PostalCode { get; set; }
+        public int OrderId { get; set; }
+        public int CustomerId { get; set; }
+        public string Make { get; set; }
+        public string Model { get; set; }
+        public string Color { get; set; }
+        public int Year { get; set; }
+        public string OwnershipType { get; set; }
     }
 
 }

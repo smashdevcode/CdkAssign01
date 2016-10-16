@@ -194,6 +194,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="BAL\OrdersRepository.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DAL\OrdersEngine.cs" />
     <Compile Include="Global.asax.cs">
@@ -203,12 +204,16 @@
     <Compile Include="Models\DTO\OrdersDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="Utility\SqlHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="DBScripts\dbo.Customers.sql" />
-    <Content Include="DBScripts\dbo.Orders.sql" />
+    <Content Include="DBScripts\Loads\CustomersLoad.sql" />
+    <Content Include="DBScripts\Loads\OrdersLoad.sql" />
+    <Content Include="DBScripts\Procedures\GetOrdersForCustomer.sql" />
+    <Content Include="DBScripts\Tables\dbo.Customers.sql" />
+    <Content Include="DBScripts\Tables\dbo.Orders.sql" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -248,8 +253,7 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Service References\Application Insights\ConnectedService.json" />
-    <Content Include="Views\Home\OrdersListTry01.cshtml" />
-    <Content Include="Views\Home\OrdersList.cshtml" />
+    <Content Include="Views\Home\OrdersList_DEL.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

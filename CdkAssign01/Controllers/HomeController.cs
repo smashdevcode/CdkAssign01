@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using CdkAssign01.Models;
+using CdkAssign01.Models.DTO;
+using CdkAssign01.BAL;
 
 namespace CdkAssign01.Controllers
 {
@@ -16,61 +18,42 @@ namespace CdkAssign01.Controllers
 
         public ActionResult Lookup(string myDesiredCustomerId)
         {
-            var ordersListViewModel = GetMockOrdersListViewModel();
 
-            //return View("OrdersList", ordersListViewModel);
+            OrdersListViewModel ordersListViewModel;
 
-            CdkAssign01.DAL.OrdersEngine.GetOrdersForCustomer(1000);
+            int customerId = 0;
+            bool success = int.TryParse(myDesiredCustomerId, out customerId);
+            if (success)
+            {
+                OrdersDTO ordersDTO = CdkAssign01.BAL.OrdersRepository.GetOrdersForCustomer(customerId);
+                ordersListViewModel = ConvertOrdersDTOToOrdersListViewModel(ordersDTO);
+            }
+            else
+            {
+                ordersListViewModel = new OrdersListViewModel() { Message = "Not a valid customer ID" };
+            }
 
             return View("Index", ordersListViewModel);
         }
 
-        private OrdersListViewModel GetMockOrdersListViewModel()
+        private OrdersListViewModel ConvertOrdersDTOToOrdersListViewModel(OrdersDTO ordersDTO)
         {
-            var ordersListViewModel = new OrdersListViewModel();
-            ordersListViewModel.Orders = new List<OrderViewModel>();
+            OrdersListViewModel ordersListViewModel = new OrdersListViewModel();
 
-            OrderViewModel order;
+            foreach (OrderDTO orderDTO in ordersDTO.Orders)
+            {
+                OrderViewModel orderViewModel = new OrderViewModel();
 
-            order = new OrderViewModel();
-            order.OrderId = "1001";
-            order.CustomerId = "9000";
-            order.FirstName = "Al";
-            order.LastName = "Santaballa";
-            order.City = "Portland";
-            order.StateCode = "OR";
-            order.PostalCode = "97209";
-            ordersListViewModel.Orders.Add(order);
+                orderViewModel.OrderId = orderDTO.OrderId.ToString();
+                orderViewModel.CustomerId = orderDTO.CustomerId.ToString();
+                orderViewModel.Make = orderDTO.Make;
+                orderViewModel.Make = orderDTO.Make;
+                orderViewModel.Color = orderDTO.Color;
+                orderViewModel.Year = orderDTO.Year.ToString();
+                orderViewModel.OwnershipType = orderDTO.OwnershipType;
 
-            order = new OrderViewModel();
-            order.OrderId = "1002";
-            order.CustomerId = "9000";
-            order.FirstName = "Donald";
-            order.LastName = "Knuth";
-            order.City = "Portland";
-            order.StateCode = "OR";
-            order.PostalCode = "97209";
-            ordersListViewModel.Orders.Add(order);
-
-            order = new OrderViewModel();
-            order.OrderId = "1003";
-            order.CustomerId = "9001";
-            order.FirstName = "Ward";
-            order.LastName = "Cunningham";
-            order.City = "Portland";
-            order.StateCode = "OR";
-            order.PostalCode = "97211";
-            ordersListViewModel.Orders.Add(order);
-
-            order = new OrderViewModel();
-            order.OrderId = "1004";
-            order.CustomerId = "9001";
-            order.FirstName = "Grover";
-            order.LastName = "Cleveland";
-            order.City = "Portland";
-            order.StateCode = "OR";
-            order.PostalCode = "97212";
-            ordersListViewModel.Orders.Add(order);
+                ordersListViewModel.Orders.Add(orderViewModel);
+            }
 
             return ordersListViewModel;
         }

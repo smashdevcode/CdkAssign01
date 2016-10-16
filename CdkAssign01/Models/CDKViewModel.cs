@@ -8,16 +8,23 @@ namespace CdkAssign01.Models
     {
         public string OrderId { get; set; }
         public string CustomerId { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string City { get; set; }
-        public string StateCode { get; set; }
-        public string PostalCode { get; set; }
+        public string Make { get; set; }
+        public string Model { get; set; }
+        public string Color { get; set; }
+        public string Year { get; set; }
+        public string OwnershipType { get; set; }
     }
 
     public class OrdersListViewModel
     {
+        public string Message { get; set; }
         public List<OrderViewModel> Orders;
+
+        public OrdersListViewModel()
+        {
+            Message = "";
+            Orders = new List<OrderViewModel>();
+        }
     }
 
 }
