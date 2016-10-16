@@ -14,11 +14,12 @@ namespace CdkAssign01.Controllers
             return View();
         }
 
-        public ActionResult Lookup()
+        public ActionResult Lookup(string myDesiredCustomerId)
         {
             var ordersListViewModel = GetMockOrdersListViewModel();
 
-            return View("OrdersList",ordersListViewModel);
+            //return View("OrdersList", ordersListViewModel);
+            return View("Index", ordersListViewModel);
         }
 
         private OrdersListViewModel GetMockOrdersListViewModel()
@@ -29,13 +30,43 @@ namespace CdkAssign01.Controllers
             OrderViewModel order;
 
             order = new OrderViewModel();
-            order.OrderId = "1000";
+            order.OrderId = "1001";
             order.CustomerId = "9000";
+            order.FirstName = "Al";
+            order.LastName = "Santaballa";
+            order.City = "Portland";
+            order.StateCode = "OR";
+            order.PostalCode = "97209";
             ordersListViewModel.Orders.Add(order);
 
             order = new OrderViewModel();
-            order.OrderId = "1001";
+            order.OrderId = "1002";
+            order.CustomerId = "9000";
+            order.FirstName = "Donald";
+            order.LastName = "Knuth";
+            order.City = "Portland";
+            order.StateCode = "OR";
+            order.PostalCode = "97209";
+            ordersListViewModel.Orders.Add(order);
+
+            order = new OrderViewModel();
+            order.OrderId = "1003";
             order.CustomerId = "9001";
+            order.FirstName = "Ward";
+            order.LastName = "Cunningham";
+            order.City = "Portland";
+            order.StateCode = "OR";
+            order.PostalCode = "97211";
+            ordersListViewModel.Orders.Add(order);
+
+            order = new OrderViewModel();
+            order.OrderId = "1004";
+            order.CustomerId = "9001";
+            order.FirstName = "Grover";
+            order.LastName = "Cleveland";
+            order.City = "Portland";
+            order.StateCode = "OR";
+            order.PostalCode = "97212";
             ordersListViewModel.Orders.Add(order);
 
             return ordersListViewModel;
