@@ -1,10 +1,13 @@
-# Devlopement Notes
+# Development Notes
 
-## Notes on approaches
+Simple MVC applicaiton to display customer's name and their orders. 
+
+* ASP MVC 
+* SQL Server 2014 
+** Database: CDK 
 
 ## Potential improvements in app
 
-* Add dispay of customer information on page!
 * State code file to be able to expand the state code into a name
 * Provide search page for customers where user could look up by name and other paramaters rather than having to enter ID
 
