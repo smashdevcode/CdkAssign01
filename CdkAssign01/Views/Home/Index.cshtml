@@ -21,7 +21,6 @@
     </div>
 </div>
 
-
 @{ Html.EndForm(); }
 
 @if (Model != null)
@@ -35,30 +34,15 @@
 
     if (Model.Customer.IsValidCustomer)
     {
+        <hr />
         <div class="row">
             <div class="col-md-12">
-                @Model.Customer.FirstName @Model.Customer.LastName
-            </div>
-        </div>
-    }
-    else
-    {
-        <div class="row">
-            <div class="col-md-12">
-                <span style="color: red">No customer by that ID found</span>
+                Customer: @Model.Customer.FirstName @Model.Customer.LastName
             </div>
         </div>
     }
 
-    if (Model.Orders.Count() == 0)
-    {
-        <div class="row">
-            <div class="col-md-12">
-                <span style="color: red">No orders</span>
-            </div>
-        </div>
-    }
-    else
+    if (Model.Orders.Count() > 0)
     {
         <hr />
         <div class="row">

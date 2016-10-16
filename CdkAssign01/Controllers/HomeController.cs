@@ -29,6 +29,14 @@ namespace CdkAssign01.Controllers
                 OrdersDTO ordersDTO = CdkAssign01.BAL.OrdersRepository.GetOrdersForCustomer(customerId);
                 ordersListViewModel = ConvertOrdersDTOToOrdersListViewModel(ordersDTO);
                 AddCustomerDTOToOrdersListViewModel(ordersListViewModel, customerDTO);
+                if (!ordersListViewModel.Customer.IsValidCustomer)
+                {
+                    ordersListViewModel.Message = "No customer with that ID";
+                }
+                else if (ordersListViewModel.Orders.Count() == 0)
+                {
+                    ordersListViewModel.Message = "No orders found";
+                }
             }
             else
             {
