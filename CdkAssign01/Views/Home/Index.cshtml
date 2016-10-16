@@ -1,19 +1,19 @@
-﻿@model CdkAssign01.Models.OrdersListViewModel
+﻿@model CdkAssign01.Models.OrdersViewModel
 
 @{
-    ViewBag.Title = "Lookup Page";
+    ViewBag.Title = "Orders Lookup";
 }
 
 <br />
 
 @{ Html.BeginForm("Lookup", "Home"); }
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-3">
         @Html.Label("Desired Customer Id: ")
-        @Html.TextBox("myDesiredCustomerId", "", new { @class = "form-control" })
+        @Html.TextBox("myDesiredCustomerId", "", new { @class = "form-control", style = "width: 150px;" })
     </div>
 
-    <div class="col-md-2">
+    <div class="col-md-3">
         <br />
         <input type="submit" value="Lookup" class="btn" />
         <span>&nbsp;</span>
@@ -53,7 +53,6 @@
                         <th>Order</th>
                         <th>Make</th>
                         <th>Model</th>
-                        <th>Model</th>
                         <th>Color</th>
                         <th>Year</th>
                         <th>Ownership</th>
@@ -65,7 +64,6 @@
                         <td>@order.CustomerId</td>
                         <td>@order.OrderId</td>
                         <td>@order.Make</td>
-                        <td>@order.Model</td>
                         <td>@order.Model</td>
                         <td>@order.Color</td>
                         <td>@order.Year</td>

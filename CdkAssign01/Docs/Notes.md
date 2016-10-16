@@ -11,7 +11,6 @@
 ## Potential improvements in structure
 
 * Move DAL/BAL into separate project
-* build DTO form dataset using LINQ
 
 ## Assumptions / Verify with users
 

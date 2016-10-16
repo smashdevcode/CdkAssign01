@@ -27,13 +27,17 @@ namespace CdkAssign01.BAL
             {
                 DataRow row = table.Rows[0];
 
-                customerDTO.CustomerId = SqlHelper.GetSafeInt(row["CustomerId"]);
-                customerDTO.FirstName = SqlHelper.GetSafeString(row["FirstName"]);
-                customerDTO.LastName = SqlHelper.GetSafeString(row["LastName"]);
-                customerDTO.Address = SqlHelper.GetSafeString(row["Address"]);
-                customerDTO.City = SqlHelper.GetSafeString(row["City"]);
-                customerDTO.StateCode = SqlHelper.GetSafeString(row["StateCode"]);
-                customerDTO.PostalCode = SqlHelper.GetSafeString(row["PostalCode"]);
+                customerDTO = new CustomerDTO
+                {
+                  CustomerId = SqlHelper.GetSafeInt(row["CustomerId"])
+                , FirstName = SqlHelper.GetSafeString(row["FirstName"])
+                , LastName = SqlHelper.GetSafeString(row["LastName"])
+                , Address = SqlHelper.GetSafeString(row["Address"])
+                , City = SqlHelper.GetSafeString(row["City"])
+                , StateCode = SqlHelper.GetSafeString(row["StateCode"])
+                , PostalCode = SqlHelper.GetSafeString(row["PostalCode"])
+                };
+
             }
 
             return customerDTO;

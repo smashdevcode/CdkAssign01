@@ -25,17 +25,16 @@ namespace CdkAssign01.BAL
 
             foreach (DataRow row in table.Rows)
             {
-                OrderDTO orderDTO = new OrderDTO();
-
-                orderDTO.OrderId = SqlHelper.GetSafeInt(row["OrderId"]);
-                orderDTO.CustomerId = SqlHelper.GetSafeInt(row["CustomerId"]);
-                orderDTO.Make = SqlHelper.GetSafeString(row["Make"]);
-                orderDTO.Model = SqlHelper.GetSafeString(row["Model"]);
-                orderDTO.Color = SqlHelper.GetSafeString(row["Color"]);
-                orderDTO.Year = SqlHelper.GetSafeInt(row["Year"]);
-                orderDTO.OwnershipType = SqlHelper.GetSafeString(row["OwnershipType"]);
-
-                ordersDTO.Orders.Add(orderDTO);
+                ordersDTO.Orders.Add(new OrderDTO
+                {
+                    OrderId = SqlHelper.GetSafeInt(row["OrderId"]),
+                    CustomerId = SqlHelper.GetSafeInt(row["CustomerId"]),
+                    Make = SqlHelper.GetSafeString(row["Make"]),
+                    Model = SqlHelper.GetSafeString(row["Model"]),
+                    Color = SqlHelper.GetSafeString(row["Color"]),
+                    Year = SqlHelper.GetSafeInt(row["Year"]),
+                    OwnershipType = SqlHelper.GetSafeString(row["OwnershipType"])
+                });
             }
 
             return ordersDTO;

@@ -19,7 +19,7 @@ namespace CdkAssign01.Controllers
         public ActionResult Lookup(string myDesiredCustomerId)
         {
 
-            OrdersListViewModel ordersListViewModel;
+            OrdersViewModel ordersListViewModel;
 
             int customerId = 0;
             bool success = int.TryParse(myDesiredCustomerId, out customerId);
@@ -40,36 +40,32 @@ namespace CdkAssign01.Controllers
             }
             else
             {
-                ordersListViewModel = new OrdersListViewModel() { Message = "Not a valid customer ID" };
+                ordersListViewModel = new OrdersViewModel() { Message = "Not a valid customer ID" };
             }
 
             return View("Index", ordersListViewModel);
         }
 
 
-        private OrdersListViewModel ConvertOrdersDTOToOrdersListViewModel(OrdersDTO ordersDTO)
+        private OrdersViewModel ConvertOrdersDTOToOrdersListViewModel(OrdersDTO ordersDTO)
         {
-            OrdersListViewModel ordersListViewModel = new OrdersListViewModel();
+            OrdersViewModel ordersListViewModel = new OrdersViewModel();
 
-            foreach (OrderDTO orderDTO in ordersDTO.Orders)
+            ordersListViewModel.Orders = ordersDTO.Orders.Select(r => new OrderViewModel
             {
-                OrderViewModel orderViewModel = new OrderViewModel();
-
-                orderViewModel.OrderId = orderDTO.OrderId.ToString();
-                orderViewModel.CustomerId = orderDTO.CustomerId.ToString();
-                orderViewModel.Make = orderDTO.Make;
-                orderViewModel.Make = orderDTO.Make;
-                orderViewModel.Color = orderDTO.Color;
-                orderViewModel.Year = orderDTO.Year.ToString();
-                orderViewModel.OwnershipType = orderDTO.OwnershipType;
-
-                ordersListViewModel.Orders.Add(orderViewModel);
-            }
-
+              OrderId = r.OrderId.ToString()
+            , CustomerId = r.CustomerId.ToString()
+            , Make = r.Make
+            , Model = r.Model
+            , Color = r.Color
+            , Year = r.Year.ToString()
+            , OwnershipType = r.OwnershipType
+            }).ToList();
+            
             return ordersListViewModel;
         }
 
-        private void AddCustomerDTOToOrdersListViewModel(OrdersListViewModel ordersListViewModel, CustomerDTO customerDTO)
+        private void AddCustomerDTOToOrdersListViewModel(OrdersViewModel ordersListViewModel, CustomerDTO customerDTO)
         {
             ordersListViewModel.Customer.IsValidCustomer = (customerDTO.CustomerId > 0);
             ordersListViewModel.Customer.CustomerId = customerDTO.CustomerId;
