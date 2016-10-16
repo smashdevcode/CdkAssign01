@@ -19,6 +19,9 @@ namespace CdkAssign01.Controllers
             var ordersListViewModel = GetMockOrdersListViewModel();
 
             //return View("OrdersList", ordersListViewModel);
+
+            CdkAssign01.DAL.OrdersEngine.GetOrdersForCustomer(1000);
+
             return View("Index", ordersListViewModel);
         }
 
