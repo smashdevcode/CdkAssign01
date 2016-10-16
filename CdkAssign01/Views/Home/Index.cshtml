@@ -33,39 +33,68 @@
         </div>
     </div>
 
-    <hr />
-    <div class="row">
-        <table>
-            <thead>
-                <tr>
-                    <th>Customer</th>
-                    <th>Order</th>
-                    <th>Make</th>
-                    <th>Model</th>
-                    <th>Model</th>
-                    <th>Color</th>
-                    <th>Year</th>
-                    <th>Ownership</th>
-                </tr>
-            </thead>
-            @foreach (var order in Model.Orders)
-            {
-                <tr>
-                    <td>@order.CustomerId</td>
-                    <td>@order.OrderId</td>
-                    <td>@order.Make</td>
-                    <td>@order.Model</td>
-                    <td>@order.Model</td>
-                    <td>@order.Color</td>
-                    <td>@order.Year</td>
-                    <td>@order.OwnershipType</td>
+    if (Model.Customer.IsValidCustomer)
+    {
+        <div class="row">
+            <div class="col-md-12">
+                @Model.Customer.FirstName @Model.Customer.LastName
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="row">
+            <div class="col-md-12">
+                <span style="color: red">No customer by that ID found</span>
+            </div>
+        </div>
+    }
 
- 
-                </tr>
-            }
-        </table>
+    if (Model.Orders.Count() == 0)
+    {
+        <div class="row">
+            <div class="col-md-12">
+                <span style="color: red">No orders</span>
+            </div>
+        </div>
+    }
+    else
+    {
+        <hr />
+        <div class="row">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Customer</th>
+                        <th>Order</th>
+                        <th>Make</th>
+                        <th>Model</th>
+                        <th>Model</th>
+                        <th>Color</th>
+                        <th>Year</th>
+                        <th>Ownership</th>
+                    </tr>
+                </thead>
+                @foreach (var order in Model.Orders)
+                {
+                    <tr>
+                        <td>@order.CustomerId</td>
+                        <td>@order.OrderId</td>
+                        <td>@order.Make</td>
+                        <td>@order.Model</td>
+                        <td>@order.Model</td>
+                        <td>@order.Color</td>
+                        <td>@order.Year</td>
+                        <td>@order.OwnershipType</td>
 
-    </div>
+
+                    </tr>
+                }
+            </table>
+
+        </div>
+
+    }
 
 }
 

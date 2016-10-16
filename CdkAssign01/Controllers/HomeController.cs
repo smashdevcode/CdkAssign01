@@ -25,8 +25,10 @@ namespace CdkAssign01.Controllers
             bool success = int.TryParse(myDesiredCustomerId, out customerId);
             if (success)
             {
+                CustomerDTO customerDTO = CdkAssign01.BAL.CustomersRepository.GetCustomerById(customerId);
                 OrdersDTO ordersDTO = CdkAssign01.BAL.OrdersRepository.GetOrdersForCustomer(customerId);
                 ordersListViewModel = ConvertOrdersDTOToOrdersListViewModel(ordersDTO);
+                AddCustomerDTOToOrdersListViewModel(ordersListViewModel, customerDTO);
             }
             else
             {
@@ -35,6 +37,7 @@ namespace CdkAssign01.Controllers
 
             return View("Index", ordersListViewModel);
         }
+
 
         private OrdersListViewModel ConvertOrdersDTOToOrdersListViewModel(OrdersDTO ordersDTO)
         {
@@ -56,6 +59,18 @@ namespace CdkAssign01.Controllers
             }
 
             return ordersListViewModel;
+        }
+
+        private void AddCustomerDTOToOrdersListViewModel(OrdersListViewModel ordersListViewModel, CustomerDTO customerDTO)
+        {
+            ordersListViewModel.Customer.IsValidCustomer = (customerDTO.CustomerId > 0);
+            ordersListViewModel.Customer.CustomerId = customerDTO.CustomerId;
+            ordersListViewModel.Customer.FirstName = customerDTO.FirstName;
+            ordersListViewModel.Customer.LastName = customerDTO.LastName;
+            ordersListViewModel.Customer.Address = customerDTO.Address;
+            ordersListViewModel.Customer.City = customerDTO.City;
+            ordersListViewModel.Customer.StateCode = customerDTO.StateCode;
+            ordersListViewModel.Customer.PostalCode = customerDTO.PostalCode;
         }
 
     }

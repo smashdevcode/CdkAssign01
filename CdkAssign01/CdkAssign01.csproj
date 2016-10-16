@@ -194,13 +194,16 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="BAL\CustomersRepository.cs" />
     <Compile Include="BAL\OrdersRepository.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="DAL\CustomersEngine.cs" />
     <Compile Include="DAL\OrdersEngine.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\CDKViewModel.cs" />
+    <Compile Include="Models\DTO\CustomersDTO.cs" />
     <Compile Include="Models\DTO\OrdersDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -253,7 +256,6 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Service References\Application Insights\ConnectedService.json" />
-    <Content Include="Views\Home\OrdersList_DEL.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
