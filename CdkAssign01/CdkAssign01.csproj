@@ -215,6 +215,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="DBScripts\Loads\CustomersLoad.sql" />
     <Content Include="DBScripts\Loads\OrdersLoad.sql" />
+    <Content Include="DBScripts\Procedures\GetCustomerById.sql" />
     <Content Include="DBScripts\Procedures\GetOrdersForCustomer.sql" />
     <Content Include="DBScripts\Tables\dbo.Customers.sql" />
     <Content Include="DBScripts\Tables\dbo.Orders.sql" />

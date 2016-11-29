@@ -6,9 +6,26 @@
 
 <br />
 
+@*
+    FEEDBACK: Instead of using Html.EndForm method to close your form
+    you can wrap the Html.BeginForm method in a using statement. When 
+    execution leaves the using block, the Html.EndForm method will be 
+    called for you.
+    
+    @using (Html.BeginForm())
+    {
+    }
+*@
+
 @{ Html.BeginForm("Lookup", "Home"); }
 <div class="row">
     <div class="col-md-3">
+        @* FEEDBACK: I think I would have just used raw HTML markup here.
+
+        <label>Desired Customer Id:</label>
+        <input name="myDesiredCustomerId" class="form-control" style="width: 150px;" />
+
+        *@
         @Html.Label("Desired Customer Id: ")
         @Html.TextBox("myDesiredCustomerId", "", new { @class = "form-control", style = "width: 150px;" })
     </div>
@@ -26,6 +43,10 @@
 @if (Model != null)
 {
 
+    @*
+    FEEDBACK: You could wrap this markup in an "if" statement
+        so you only render it if there's a message to display.    
+    *@    
     <div class="row">
         <div class="col-md-12">
             <span style="color: red">@Model.Message</span>

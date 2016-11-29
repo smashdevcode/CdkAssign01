@@ -14,6 +14,10 @@ namespace CdkAssign01.BAL
     public class CustomersRepository
     {
 
+        // FEEDBACK: Just out of curiosity, your project includes 
+        // Entity Framework but you didn't use it; why not?
+        // Using the EF Code First workflow (with an existing database)
+        // would have saved you from writing some code.
 
         public static CustomerDTO GetCustomerById(int customerId)
         {

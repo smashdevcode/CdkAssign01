@@ -6,6 +6,13 @@ namespace CdkAssign01.Models
 
     public class OrderViewModel
     {
+        // FEEDBACK: Same feedback as with the CustomersViewModel.
+        // These properties could have been replaced with an 
+        // instance of an "Order" entity.
+
+        // FEEDBACK: Why not use "int" for the OrderId, CustomerId, and Year
+        // property's data type?
+
         public string OrderId { get; set; }
         public string CustomerId { get; set; }
         public string Make { get; set; }

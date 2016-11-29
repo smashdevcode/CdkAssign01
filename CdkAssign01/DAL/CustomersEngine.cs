@@ -10,10 +10,19 @@ using CdkAssign01.Models.DTO;
 
 namespace CdkAssign01.DAL
 {
+    // FEEDBACK: If a class only has static methods 
+    // I'd go ahead and make the class static too.
     public class CustomersEngine
     {
+        // FEEDBACK: This method is almost identical to the GetOrdersForCustomer method
+        // in the OrdersEngine class. You could have used a "GetDataSet" method
+        // that accepted the stored procedure name to call. This is an example of DRY.
         public static DataSet GetCustomerById(int customerId)
         {
+            // FEEDBACK: This is a bit of a nitpick 
+            // but since there's only a single result set
+            // I'd use a DataTable here instead of a DataSet 
+            // (a bit less overhead).
             DataSet ds = new DataSet();
             var constr = ConfigurationManager.ConnectionStrings["CDKConnection"].ConnectionString;
             var conn = new SqlConnection(constr);
@@ -28,6 +37,8 @@ namespace CdkAssign01.DAL
             cmd.CommandType = CommandType.StoredProcedure;
             da.Fill(ds);
 
+            // FEEDBACK: I like how you're checking if the customer ID exists
+            // but you're not doing anything with the return value.
             var result = returnParameter.Value;
 
             return ds;
